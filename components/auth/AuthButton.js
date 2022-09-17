@@ -25,11 +25,11 @@ export default function AuthButton({ text, email, password, username, sign }) {
 
 const styles = StyleSheet.create({
     button: {
-        width: '65%',
-        backgroundColor: '#2FFFB2',
+        width: '85%',
+        backgroundColor: '#1E232C',
         alignItems: 'center',
         justifyContent: 'center',
-        height: 50,
+        height: 60,
         borderRadius: 10,
         marginTop: 42,
         shadowColor: "#000",
@@ -42,9 +42,9 @@ const styles = StyleSheet.create({
         elevation: 8,
     },
     buttonText: {
-        color: '#444444',
+        color: 'white',
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: '500'
     }
 
 })

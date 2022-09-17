@@ -5,7 +5,7 @@ export default function OrLine() {
     return(
         <View style={styles.lineBlock}>
         <View style={styles.line}/>
-        <Text style={styles.lineText}>ou</Text>
+        <Text style={styles.lineText}>Connexion avec</Text>
         <View style={styles.line}/>
     </View>
     );
@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
         width: '35%'
     },
     lineText: {
-        width: '10%',
         color: '#323232',
         fontWeight: 'bold',
         textAlign: 'center',

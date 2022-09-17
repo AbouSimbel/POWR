@@ -1,4 +1,5 @@
 import { View, StyleSheet, Text, TouchableOpacity, KeyboardAvoidingView } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
 import GoogleAuthButton from '../../components/auth/GoogleAuthButton';
 import InputContainer from '../../components/auth/InputContainer';
 import AuthButton from '../../components/auth/AuthButton';
@@ -15,21 +16,32 @@ export default function Login({ navigation }) {
 
     return(
             <KeyboardAvoidingView behavior='height' style={styles.kav}>
+
+
         <View style={styles.main}>
+
+            {/* La StatusBar doit etre fond blanc et écritures noire */}
+            <StatusBar style="auto"/>
+
             <BigPowr/>
           
-            <Text style={styles.text}>Optimise ta puissance !</Text>
+            <Text style={styles.text}>Bonjour, </Text>
+            <Text style={styles.text}>content de te revoir ! ⚽</Text>
 
-            <GoogleAuthButton/>
 
-            <OrLine/>
 
-            <Text style={styles.text2}>Connexion avec email</Text>
+            
 
             <InputContainer value={email} setValue={setEmail} text={"Email"} type={"email"} required={true}/>
             <InputContainer value={password} setValue={setPassword} text={"Mot de passe"} type={"password"} secureTextEntry={true} required={true}/>
 
-            <AuthButton text={"CONNEXION"} sign={sign} email={email} password={password}/>
+            
+            <AuthButton text={"Connexion"} sign={sign} email={email} password={password}/>
+
+            <OrLine/>
+
+            <GoogleAuthButton/>
+
 
             <TouchableOpacity
                 style={styles.changeAuthButton}
@@ -45,7 +57,7 @@ export default function Login({ navigation }) {
 const styles = StyleSheet.create({
     main: {
         flex: 1,
-        justifyContent: 'center',
+        
         alignItems: 'center',
         backgroundColor: "#FDFDFD"
     },
@@ -68,7 +80,8 @@ const styles = StyleSheet.create({
     },
     text: {
         fontWeight: 'bold',
-        marginTop:30,
-        color: '#444444'
+        color: '#1E232C',
+        width: "85%", 
+        fontSize: 28
     }
 })
