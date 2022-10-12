@@ -19,7 +19,6 @@ export default function CameraChallenge({ setRecordedVideo, recordedVideo, chall
   useEffect(() => {
     (async () => {
       const cameraPermission = await Camera.requestCameraPermissionsAsync();
-      console.log('camPerm => ', cameraPermission.status === 'granted')
       setHasCameraPermission(cameraPermission.status === 'granted');
       await Camera.requestMicrophonePermissionsAsync();
 

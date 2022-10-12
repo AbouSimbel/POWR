@@ -9,7 +9,10 @@ export default function HomeCarousel({ categoryData }) {
     return(
         <View style={styles.container}>
             <Text style={styles.carouselTitle}>{categoryData.title}</Text>
-            <ScrollView style={styles.carousel} horizontal pagingEnabled={true}>
+            <ScrollView style={styles.carousel} horizontal pagingEnabled={true}
+                   snapToInterval={60}
+                   //snapToAlignment={"center"}
+            >
 
                  {categoryData.data.data.map((cardData, index) => {
                     return(

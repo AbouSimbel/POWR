@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
-export default function LeaveModal({ displayModal, setDisplayModal }) {
+export default function LeaveModal({ displayLeaveModal, setDisplayLeaveModal }) {
 
     const navigation = useNavigation();
 
@@ -21,7 +21,7 @@ export default function LeaveModal({ displayModal, setDisplayModal }) {
     return(
         <Modal
             style={styles.modal}
-            visible={displayModal}
+            visible={displayLeaveModal}
             transparent
           >
             <View style={styles.centeredView}>

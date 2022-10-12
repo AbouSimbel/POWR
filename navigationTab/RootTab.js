@@ -5,6 +5,8 @@ import LiveCoachingStackScreen from "../stacks/LiveCoachingStack";
 import ProfilStackScreen from "../stacks/ProfileStack";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import TrainingTab from "./TrainingTab";
+import { View, Text } from "react-native";
+import TabHeader from "../components/common/TabHeader";
 
 export default function RootTab() {
 
@@ -12,14 +14,17 @@ export default function RootTab() {
 
     return(
       <Tab.Navigator
-        screenOptions={
+
+      options={{
+        title: "123"
+      }}
+      screenOptions={
           ({ route }) => ({
+      
           tabBarIcon: ({focused, color, size}) => {
             let iconName;
   
-            if(route.name === 'Accueil') {
-              iconName = focused ? 'home' : 'home-outline'
-            } else if(route.name === 'Entraînements') {
+            if(route.name === 'Séances libres') {
               iconName = focused ? 'football' : 'football-outline'
             } else if(route.name === 'Live Coaching') {
               iconName = focused ? 'videocam' : 'videocam-outline'
@@ -28,9 +33,17 @@ export default function RootTab() {
             }
             return <Ionicons name={iconName} size={size} color={color} />
           }   
+          
         })}>
-            <Tab.Screen options={{headerShown: false}} name="Accueil" component={HomeStackScreen}/>
-            <Tab.Screen name="Entraînements" component={TrainingTab}/>
+          
+            <Tab.Screen 
+              name="Séances libres" 
+              component={TrainingTab}
+              options={{
+                headerStyle: {backgroundColor: 'white'},
+                header: () => <TabHeader/>
+              }}
+              />
             <Tab.Screen name="Live Coaching" component={LiveCoachingStackScreen}/>
             <Tab.Screen name="Profile" component={ProfilStackScreen}/>
 

@@ -1,5 +1,5 @@
 import Sessions from "../screens/sessions/Sessions";
-import SessionDetails from "../screens/sessions/SessionDetails";
+import SessionsHome from "../screens/sessions/SessionsHome";
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import SessionsStackScreen from "../stacks/SessionsStack";
 import ChallengesStackScreen from "../stacks/ChallengesStack";
@@ -9,14 +9,18 @@ const Tab = createMaterialTopTabNavigator();
 export default function TrainingTab() {
     return(
         <Tab.Navigator
+            options={{headerShown: false}}
             screenOptions={{
-                tabBarLabelStyle: { fontSize: 10 },
+                tabBarLabelStyle: { fontSize: 9 },
                 tabBarStyle: { height: 40 },
-                headerShown: true
-            }}>
-            <Tab.Screen name="MA PREPA" component={SessionDetails}/>
-            <Tab.Screen name="CHALLENGES" component={ChallengesStackScreen}/>
-            <Tab.Screen name="SEANCES LIBRES" component={SessionsStackScreen}/>
+                swipeEnabled: false
+            }}
+            >
+
+            <Tab.Screen name="Les séances" component={SessionsHome}/>
+            <Tab.Screen name="Les dribbles" component={ChallengesStackScreen}/>
+            <Tab.Screen listeners={{tabPress: e => e.preventDefault()}} name=" " component={ChallengesStackScreen}/>
+            <Tab.Screen listeners={{tabPress: e => e.preventDefault()}} name="  " component={ChallengesStackScreen}/>
         </Tab.Navigator>
     )
 };

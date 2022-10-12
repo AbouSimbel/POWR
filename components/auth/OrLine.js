@@ -15,17 +15,20 @@ const styles = StyleSheet.create({
     lineBlock: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginVertical: 15
+        marginTop: 35,
+        marginBottom: 22,
+        width: "85%"
     },
     line: {
         height: 1,
-        backgroundColor: '#898989',
-        width: '35%'
+        backgroundColor: '#E8ECF4',
+        flex:1
     },
     lineText: {
-        color: '#323232',
-        fontWeight: 'bold',
+        color: '#6A707C',
+        fontWeight: '500',
         textAlign: 'center',
-        fontSize: 16
+        fontSize: 14,
+        marginHorizontal: 15
     }
 })

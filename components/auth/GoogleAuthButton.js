@@ -1,43 +1,48 @@
-import { Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import googleIcon from '../../assets/images/googleIcon.png';
+import { Text, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import googleIcon from '../../assets/icons/google.png';
+import facebookIcon from '../../assets/icons/facebook.png';
+import appleIcon from '../../assets/icons/apple.png'
 
 export default function GoogleAuthButton() {
     return(
-        <TouchableOpacity
-            style={styles.button}
+        <View style={styles.socialsAuth}>
+
+            <TouchableOpacity
+                style={styles.socialAuthButton}
             >
-            <Image resizeMode='contain' style={styles.googleIcon} source={googleIcon}/>
-            <Text style={styles.text}>Connexion avec mon compte Google</Text>
-        </TouchableOpacity>
+                <Image resizeMode='contain' style={styles.socialsAuthIcon} source={facebookIcon}/>
+            </TouchableOpacity>
+
+
+            <TouchableOpacity
+             style={styles.socialAuthButton}
+             ><Image resizeMode='contain' style={styles.socialsAuthIcon} source={googleIcon}/></TouchableOpacity>
+
+
+            <TouchableOpacity
+             style={styles.socialAuthButton}
+             ><Image resizeMode='contain' style={styles.socialsAuthIcon} source={appleIcon}/></TouchableOpacity>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
-    button: {
+    socialsAuth: {
         flexDirection: 'row',
+        width: '85%',
+        justifyContent: 'space-between',
+    },
+    socialAuthButton: {
+        height: 56,
+        width: '30%',
+        borderRadius: 10,
+        borderColor: '#E8ECF4',
+        borderWidth: 1,
         alignItems: 'center',
-        backgroundColor: "#F6F6F6",
-        height: 50,
-        width: '80%',
-        borderRadius: 5,
-        shadowColor: "#000",
-        shadowOffset: {
-	        width: 0,
-	        height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-        marginTop: 16
+        justifyContent: 'center'
     },
-    googleIcon: {
-        height: 30
+    socialsAuthIcon: {
+        height: 24
     },
-    text: {
-        fontSize: 12,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        flex:1,
-        color: "#444444"
-    }
-})
+
+});

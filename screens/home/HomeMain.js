@@ -1,9 +1,10 @@
-import { View, StyleSheet, Text, TouchableOpacity, ScrollView, StatusBar, SafeAreaView } from "react-native";
+import { View, StyleSheet, Text, TouchableOpacity, ScrollView, StatusBar, SafeAreaView, Image } from "react-native";
 import BigPowr from "../../components/common/BigPowr";
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase/firebase-config';
 import HomeCarousel from "../../components/home/HomeCarousel";
+import defaultUser from '../../assets/images/defaultUser.png';
 
 const statusBarHeight = StatusBar.currentHeight;
 
@@ -41,7 +42,12 @@ export default function HomeMain({ navigation }) {
         <Text>Loading...</Text>
     ) : (
         <SafeAreaView style={styles.safeView}>
-            <BigPowr/>   
+
+            <View style={{width: "90%", alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-between', marginTop: 30, alignItems: 'center'}}>
+                <Text style={{fontSize: 20, fontWeight: 'bold'}}> Bienvenue Kylian !</Text>
+                <Image source={defaultUser}/>
+            </View>
+
         <ScrollView style={styles.main}>
 
             {data.map((categoryData, index) => {

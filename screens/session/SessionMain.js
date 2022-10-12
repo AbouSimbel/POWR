@@ -74,8 +74,7 @@ export default function SessionMain({ navigation }) {
       <View style={styles.componentContainer}>
        {displayModal && <LeaveModal setDisplayModal={setDisplayModal}/>}
        {displayRestartModal && <RestartModal setDisplayRestartModal={setDisplayRestartModal}/>}
-
-
+       
         {trainingData[step].type === 'loop' ?
         <LoopComponent displayModal={displayModal} displayRestartModal={displayRestartModal} setDisplayModal={setDisplayModal} setDisplayRestartModal={setDisplayRestartModal} step={step} setStep={setStep} trainingData={trainingData[step]}/> :
         trainingData[step].type === 'restTimer' ? 
