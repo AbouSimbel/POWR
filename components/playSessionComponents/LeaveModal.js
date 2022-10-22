@@ -8,6 +8,16 @@ export default function LeaveModal({ setDisplayLeaveModal }) {
 
     const navigation = useNavigation();
 
+    //Fonction pour effacer le storage de la seance (sessionData)
+    const removeSessionDataStorage = async () => {
+        try {
+          await AsyncStorage.removeItem('sessionData')
+        } catch(e) {
+          // remove error
+        }
+      }
+
+
     return(
         <View style={styles.blurredBackground}>
             <View style={{padding: 20, backgroundColor: 'white', width: '90%', borderRadius: 20, alignItems: 'center'}}>
@@ -23,7 +33,9 @@ export default function LeaveModal({ setDisplayLeaveModal }) {
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                    onPress={() => navigation.navigate('Séances libres')}
+                    onPress={() => {
+                        removeSessionDataStorage();
+                        navigation.navigate('Séances libres')}}
                     style={{height: 40, alignItems: 'center', justifyContent: 'center'}}
                     >
                         <Text style={{color: '#ff2f2f', fontSize: 16, fontWeight: 'bold'}}>Quitter</Text>

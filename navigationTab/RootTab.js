@@ -44,7 +44,7 @@ export default function RootTab() {
                 header: () => <TabHeader/>
               }}
               />
-            <Tab.Screen name="Live Coaching" component={LiveCoachingStackScreen}/>
+            {/* <Tab.Screen name="Live Coaching" component={LiveCoachingStackScreen}/> */}
             <Tab.Screen name="Profile" component={ProfilStackScreen}/>
 
         </Tab.Navigator>

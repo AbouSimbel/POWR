@@ -1,25 +1,12 @@
 import { View, TouchableOpacity, ScrollView, StyleSheet, Text, ImageBackground, Alert } from 'react-native';
 import { selectSession } from '../../../middleWares/sessions';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 
 export default function CategorySlider({ catData }) {
 
     const navigation = useNavigation();
-
-    // Au clique sur la card, déclancher un fonction pour aller vers details de la séance. Cette fonction doit mettre la data de la seance en storage.
-    const handleSessionSelection = async (session) => {
-        try {
-            const strData = JSON.stringify(session);
-            await AsyncStorage.setItem('sessionData', strData);
-            navigation.navigate('Session', {screen:'PlaySessionMain'});
-          } catch(error) {
-            Alert(error);
-          }
-           
-    } 
-
     
     return (
         <View style={{ paddingLeft: '5%', marginTop: 24 }}>
@@ -35,7 +22,7 @@ export default function CategorySlider({ catData }) {
                 {catData.data.map((session, index) => {
                     return (
                         <TouchableOpacity
-                            onPress={handleSessionSelection(session)}
+                            onPress={() => navigation.navigate('SessionDetails', { session : session })}
                             key={index}
                             style={{ backgroundColor: '#f8f8f8', height: 135, width: 220, marginRight: 17, borderRadius: 3, justifyContent: 'flex-end' }}
                         >

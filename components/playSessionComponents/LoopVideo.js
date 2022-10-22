@@ -5,15 +5,21 @@ import { useEffect, useRef, useState } from 'react';
 import { CountdownCircleTimer } from 'react-native-countdown-circle-timer';
 import close from '../../assets/icons/close.png';
 import restart from '../../assets/icons/restart.png';
-import pause from '../../assets/icons/pause.png'
+import pause from '../../assets/icons/pause.png';
+import play from '../../assets/icons/play.png';
+import { useNavigation } from '@react-navigation/native';
 
 
-export default function LoopVideo({ data, setStep, step }) {
+export default function LoopVideo({ data, setStep, step, displayLeaveModal, setDisplayLeaveModal, setDisplayRestartModal }) {
+
+    const navigation = useNavigation();
 
     const insets = useSafeAreaInsets();
     const video = useRef(null);
 
     const [status, setStatus] = useState({});
+
+    const [isPlaying, setIsPlaying] = useState(true);
 
     return(
         <View style={[styles.screenContainer, { paddingBottom: insets.bottom }]}>
@@ -46,7 +52,7 @@ export default function LoopVideo({ data, setStep, step }) {
                 <CountdownCircleTimer
                         key={step}
                         style={{height: 90}}
-                        isPlaying
+                        isPlaying={isPlaying}
                         duration={data.duration}
                         colors={['black']}
                         strokeWidth={0}
@@ -63,6 +69,10 @@ export default function LoopVideo({ data, setStep, step }) {
 
                     <TouchableOpacity
                         style={styles.button}
+                        onPress={() => {
+                            data.video && video.current.pauseAsync();
+                            setIsPlaying(false);
+                            setDisplayRestartModal(true)}}
                     >
                         <Image source={restart} style={{height: 24, width: 24}}/>
 
@@ -70,13 +80,22 @@ export default function LoopVideo({ data, setStep, step }) {
 
                     <TouchableOpacity
                         style={styles.button}
+                        onPress={() =>{
+                            data.video && status.isPlaying ? video.current.pauseAsync() : video.current.playAsync();
+                            setIsPlaying(!isPlaying)
+                          }}
                     >
-                         <Image source={pause} style={{height: 24, width: 24}}/>
+                         <Image source={isPlaying ? pause : play} style={{height: 24, width: 24}}/>
 
                     </TouchableOpacity>
 
                     <TouchableOpacity
                         style={styles.button}
+                        onPress={() =>{
+                            data.video && video.current.pauseAsync();
+                            setIsPlaying(false);
+                            setDisplayLeaveModal(true);
+                          }}
                     >
                         <Image source={close} style={{height: 20, width: 20}}/>
 
